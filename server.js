@@ -1,6 +1,8 @@
+const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 const router = require('./routes/index');
+const bodyParser = require('body-parser');
 const app = express();
 
 mongoose.connect("mongodb://localhost/user-admin-backend");
@@ -10,5 +12,6 @@ db.once('open', () => console.log('Connected to Mongoos'));
 
 app.use(express.json());
 app.use('/api', router);
+app.use(bodyParser.json());
 
 app.listen(3001);
